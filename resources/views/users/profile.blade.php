@@ -187,7 +187,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('profileUpdate') }}">
                             @csrf
 
                             <label class="switch">
@@ -196,7 +196,7 @@
                             </label>
 
                             <div class="align-items-center mb-2">
-                                <img class="img-thumbnail" src="{{asset('/images/men.jpg')}}" alt="image">
+                                <img class="img-thumbnail" width="150" height="150" src="{{asset('/images/profile/profile.png')}}" alt="image">
 
                             </div>
                             <div class="form-group row">
@@ -222,7 +222,7 @@
                                     Email
                                     <input id="email" type="email"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{Auth::user()->email != null ? Auth::user()->email : ''}}" required
+                                           value="{{Auth::user()->email != null ? Auth::user()->email : ''}}"
                                            autocomplete="email">
 
                                     @error('email')
@@ -643,8 +643,7 @@
                                 <div class="col-md-6">
                                     Pssword
                                     <input id="password" type="password"
-                                           class="form-control @error('password') is-invalid @enderror" name="password"
-                                           required autocomplete="new-password">
+                                           class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -658,7 +657,7 @@
                                 <div class="col-md-6">
                                     Confirm Password
                                     <input id="password-confirm" type="password" class="form-control"
-                                           name="password_confirmation" required autocomplete="new-password">
+                                           name="password_confirmation"      autocomplete="new-password">
                                 </div>
                             </div>
 
@@ -682,7 +681,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button class="file-upload-btn" type="submit">{{ __('Register') }}</button>
+                                    <button class="file-upload-btn" type="submit">{{ __('Save') }}</button>
 
                                 </div>
                             </div>

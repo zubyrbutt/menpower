@@ -27,4 +27,7 @@ class UserController extends Controller
 
 
     }
+    public function profileUpdate(Request $request){
+        dd($request);
+    }
 }

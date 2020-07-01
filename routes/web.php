@@ -18,6 +18,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/phone', 'UserController@phone')->name('phone');
 Route::get('/profile', 'UserController@profile')->name('profile');
+Route::post('/profile-update', 'UserController@profileUpdate')->name('profileUpdate');
+
 Route::get('/profile/{id}', 'UserController@profileDetail')->name('profile.detail');
 
 Route::post('state-list', 'UserController@fetch')->name('state-list');

@@ -28,7 +28,7 @@ class HomeController extends Controller
     }
 
     public function home(){
-        $users =User::all();
+        $users =User::latest()->get();
         return view('welcome',compact('users'));
     }
 }

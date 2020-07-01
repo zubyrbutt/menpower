@@ -21,6 +21,18 @@
 
         <div class="row">
             <div class="col-md-8">
+                <div class="mb-3">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary" style="color: #fff" type="submit">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
                 @foreach($users as $user)
 
@@ -32,7 +44,7 @@
                                     <div class="text-right" style="height: 70px; width: 70px; border-radius: 140px;" >
                                          <span>
                                     <img class="card-img ml-1 mr-1" style=" border: 1px solid #ddd;"
-                                         src="{{asset('/images/men.jpg')}}" alt="Card image cap">
+                                         src="{{asset('/images/profile/profile.png')}}" alt="Card image cap">
                                          </span>
                                 </div>
 
@@ -43,7 +55,7 @@
                                     </p>
 
                                     <div class="text-right">
-                                    <a href="{{url('profile/'.$user->id)}}" class="btn btn-primary">Go somewhere</a>
+                                    <a href="{{url('profile/'.$user->id)}}" class="btn btn-primary">Go Porfile</a>
                                     </div>
                                     <div class=""></div>
                                     <span style="text-transform: uppercase; font-size: 10px;">Rawalpindi, pakistan</span>
