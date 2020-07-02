@@ -21,5 +21,6 @@ Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/profile-update', 'UserController@profileUpdate')->name('profileUpdate');
 
 Route::get('/profile/{id}', 'UserController@profileDetail')->name('profile.detail');
+Route::get('live_search/action', 'HomeController@search')->name('live_search.search');
 
 Route::post('state-list', 'UserController@fetch')->name('state-list');

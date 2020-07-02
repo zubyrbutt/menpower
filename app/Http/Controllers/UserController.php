@@ -20,14 +20,30 @@ class UserController extends Controller
         return view('users.profile', compact('user', 'locations'));
     }
 
-    public function profileDetail(Request $request, $id){
+    public function profileDetail(Request $request, $id)
+    {
         $user = User::find($id);
         //dd($user);
         return view('users.profile-detail', compact('user'));
 
 
     }
-    public function profileUpdate(Request $request){
+
+    public function profileUpdate(Request $request)
+    {
+        //dd($request);
+        User::where('id', Auth::user()->id)->update([
+            'email' => $request->email,
+
+        ]);
+
+        return back();
+
+    }
+
+//    search in welcome view
+    public function search(Request $request)
+    {
         dd($request);
     }
 }

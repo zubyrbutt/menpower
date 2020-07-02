@@ -237,11 +237,11 @@
                                 <div class="col-md-6">
                                     State
                                     <select id="state" data-dependent="city" name="state" class="form-control dynamic" onchange="getCity()">
-                                        <option>Select satate</option>
-                                        @foreach($locations as $location)
-                                            <option value="2003000">{{$location->state}}</option>
+{{--                                        <option value="unknown">Select satate</option>--}}
+{{--                                        @foreach($locations as $location)--}}
+{{--                                            <option value="2003000">{{$location->state}}</option>--}}
 
-                                        @endforeach
+{{--                                        @endforeach--}}
                                         {{--                                        <option value="2003000">Azad Kashmir</option>--}}
                                         {{--                                        <option value="2003001">Balochistan</option>--}}
                                         {{--                                        <option value="2003003">Islamabad Capital Territory</option>--}}
@@ -736,18 +736,7 @@
 
 
     </script>
-    <script>
-       function getCity() {
-           var state = $('#state').val();
-           if(state!==''){
 
-               //console.log('value found');
-
-           }else{
-               console.log('value not found');
-           }
-
-       }
     </script>
 @endsection
 
