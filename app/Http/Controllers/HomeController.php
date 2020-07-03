@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Location;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'home']);
+        $this->middleware('auth', ['except' => ['home', 'search']]);
     }
 
     /**

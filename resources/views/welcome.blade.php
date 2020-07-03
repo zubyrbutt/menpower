@@ -1,13 +1,6 @@
 @extends('layouts.app')
 @section('style')
-    <style>
-        .link-text {
-            color: #002f34;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            line-height: 16.1px;
-        }
-    </style>
+
 
 @endsection
 
@@ -72,16 +65,12 @@
             </div>
             <div class="col-md-8">
                 <div class="mb-3">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary" style="color: #fff" type="submit">
-                                    Search
-                                </button>
-                            </div>
+
+                        <div class="alert alert-info alert-danger" id="myAlert">
+                            <a href="#" class="close">&times;</a>
+                            <strong>Success!</strong> This alert box could indicate a successful or positive action.
                         </div>
-                    </form>
+
                 </div>
 
                 @foreach($users as $user)
@@ -163,7 +152,7 @@
                     dataType:'json',
                     success:function(data)
                     {
-                        console.log(data.table_data);
+                        //console.log(data.table_data);
                         $('#initial_table').html(data.table_data);
                         //$('#total_records').text(data.total_data);
                     }
@@ -175,6 +164,13 @@
 
                 fetch_customer_data(query);
 
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $(".close").click(function(){
+                $("#myAlert").alert("close");
             });
         });
     </script>

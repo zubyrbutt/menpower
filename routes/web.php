@@ -24,3 +24,11 @@ Route::get('/profile/{id}', 'UserController@profileDetail')->name('profile.detai
 Route::get('live_search/action', 'HomeController@search')->name('live_search.search');
 
 Route::post('state-list', 'UserController@fetch')->name('state-list');
+Route::post('dynamic_dependent/fetch', 'UserController@fetch')->name('dynamicdependent.fetch');
+
+
+
+//Admin Routes
+Route::get('/dashboard','UserController@dashboard')->name('dashboard');
+Route::get('/dashboard/add-new-location','UserController@addnewlocation')->name('addnewlocation');
+Route::post('/dashboard/add-new-location/store','UserController@addnewlocationstore')->name('addnewlocationstore');
