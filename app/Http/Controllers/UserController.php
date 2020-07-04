@@ -29,14 +29,20 @@ class UserController extends Controller
         //dd($user);
         return view('users.profile-detail', compact('user'));
 
-
     }
 
     public function profileUpdate(Request $request)
     {
         //dd($request);
+        $this->validate($request,[
+            'email' => 'required|unique:users',
+        ]);
+
         User::where('id', Auth::user()->id)->update([
             'email' => $request->email,
+            'state' => $request->state,
+            'city' => $request->city,
+            'locally' => $request->locally,
 
         ]);
 
@@ -44,6 +50,9 @@ class UserController extends Controller
 
     }
 
+    public function userskills(){
+        return view('users.skills');
+    }
 
 
 //    Admin Functions

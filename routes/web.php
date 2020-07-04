@@ -25,6 +25,7 @@ Route::get('live_search/action', 'HomeController@search')->name('live_search.sea
 
 Route::post('state-list', 'UserController@fetch')->name('state-list');
 Route::post('dynamic_dependent/fetch', 'UserController@fetch')->name('dynamicdependent.fetch');
+Route::get('/user-skills','UserController@userskills');
 
 
 

@@ -80,25 +80,50 @@
                             <div class="card mb-1">
                                 <div class="card-body">
 
-                                    <div class="text-right" style="height: 70px; width: 70px; border-radius: 140px;">
-                                         <span>
-                                    <img class="card-img ml-1 mr-1" style=" border: 1px solid #ddd;"
-                                         src="{{asset('/images/profile/profile.png')}}" alt="Card image cap">
-                                         </span>
-                                    </div>
+                                    <div class="media col-md">
+                                        <img class="align-self-start mr-3" style=" border: 1px solid #ddd;" width="130" height="130" src="{{asset('/images/profile/profile.png')}}" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="card-title"
+                                                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 16.1px; color: #002f34; text-transform: capitalize">
+                                                <b>{{$user->name}}</b></h5>
 
-                                    <p class="card-title"
-                                       style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 16.1px; color: #002f34; text-transform: uppercase">
-                                        <b>{{$user->name}}</b>
-                                        <br>plumber, Electration
-                                    </p>
+                                            <div class="card-title text-muted" style="text-transform: capitalize; font-size: 11px" >
+                                                <span>Plumber, Electration - </span>
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                </svg>
+                                                <span>Dhok kala khan, Rawalpindi</span>
 
-                                    <div class="text-right">
-                                        <a href="{{url('profile/'.$user->id)}}" class="btn btn-primary">Go Porfile</a>
+                                               </div>
+                                            <p>Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                        </div>
                                     </div>
+{{--                                    <div class="text-right" style="height: 70px; width: 70px; border-radius: 140px;">--}}
+{{--                                         <span>--}}
+{{--                                    <img class="card-img ml-1 mr-1" style=" border: 1px solid #ddd;"--}}
+{{--                                         src="{{asset('/images/profile/profile.png')}}" alt="Card image cap">--}}
+{{--                                         </span>--}}
+{{--                                    </div>--}}
+
+{{--                                    <p class="card-title"--}}
+{{--                                       style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 16.1px; color: #002f34; text-transform: uppercase">--}}
+{{--                                        <b>{{$user->name}}</b>--}}
+{{--                                        <br>plumber, Electration--}}
+{{--                                    </p>--}}
+
+{{--                                    <div class="media">--}}
+{{--                                        <div class="media-body">--}}
+{{--                                            <div class="text-right">--}}
+{{--                                                <a href="{{url('profile/'.$user->id)}}" class="btn btn-primary">Go Porfile</a>--}}
+
+{{--                                            </div>--}}
+
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+
+
                                     <div class=""></div>
-                                    <span
-                                        style="text-transform: uppercase; font-size: 10px;">Rawalpindi, pakistan</span>
+
                                 </div>
                             </div>
                         </div>
