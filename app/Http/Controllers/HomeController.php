@@ -31,8 +31,9 @@ class HomeController extends Controller
 
     public function home()
     {
-        $users = User::latest()->paginate(5);
-        $locations = Location::all();
+        $users = User::select(['id', 'name', 'skill', 'city', 'locally'])->where('city', '!=', null)->where('skill', '!=', null)->paginate(9);
+        $locations = Location::select('state')->get();
+
         return view('welcome', compact('users', 'locations'));
     }
 
@@ -61,10 +62,11 @@ class HomeController extends Controller
                 if ($total_row > 0) {
                     foreach ($data as $row) {
                         $output .=
-                            '<a href="#" class="card-link link-text">'
-                            . $row->locally . ' - '
-                            . $row->city .
-                            '</a><span class="badge badge-light">  10</span><hr>';
+                            '<a href="' . $row->locally_slug . '" class="card-link link-text">'
+                            . $row->locally .
+                            '</a>
+                            <a href="city/'.$row->city_slug.'"> '. $row->city .'</a>
+                            <span class="badge badge-light">  10</span><hr>';
                     }
                 } else {
                     $output = '
@@ -81,6 +83,34 @@ class HomeController extends Controller
                 echo json_encode($data);
             }
         }
+    }
+
+    public function skillfilter(Request $request, $skill)
+    {
+        //dd($skill);
+        $users = User::where('skill', $skill)->paginate(9);
+        $locations = Location::select('state')->get();
+
+        return view('welcome', compact('users', 'locations'));
+
+    }
+
+    public function cityfilter(Request $request, $city)
+    {
+        //dd($location);
+        $users = User::where('city', $city)->paginate(9);
+        $locations = Location::select('state')->get();
+
+        return view('welcome', compact('users', 'locations'));
+    }
+
+    public function areafilter($area)
+    {
+        //dd($area);
+        $users = User::where('area', $area)->paginate(9);
+        $locations = Location::select('state')->get();
+
+        return view('welcome', compact('users', 'locations'));
     }
 
 }

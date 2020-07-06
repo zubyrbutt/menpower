@@ -25,9 +25,22 @@ Route::get('live_search/action', 'HomeController@search')->name('live_search.sea
 
 Route::post('state-list', 'UserController@fetch')->name('state-list');
 Route::post('dynamic_dependent/fetch', 'UserController@fetch')->name('dynamicdependent.fetch');
-Route::get('/user-skills','UserController@userskills');
 
 
+Route::get('/update-location','UserController@updatelocation');
+Route::post('/update-location-store','UserController@updatelocationstore')->name('update-location-store');
+
+//skils
+Route::get('/user-skills','SkillController@index');
+Route::post('/user-skills-store','SkillController@store')->name('userskillsstore');
+
+//filter
+Route::get('/category/{skill}','HomeController@skillfilter');
+Route::get('/city/{city}','HomeController@cityfilter');
+Route::get('/{area}','HomeController@areafilter');
+
+Route::get('/user-name-change','UserController@changenameform');
+Route::post('/user-change-name-store','UserController@userchangename')->name('userchangename');
 
 //Admin Routes
 Route::get('/dashboard','UserController@dashboard')->name('dashboard');

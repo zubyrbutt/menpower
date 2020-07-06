@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -35,11 +36,13 @@ class UserController extends Controller
     {
         //dd($request);
         $this->validate($request,[
-            'email' => 'required|unique:users',
+            'state' => 'required',
+            'city' => 'required',
+            'locally' => 'required',
         ]);
 
         User::where('id', Auth::user()->id)->update([
-            'email' => $request->email,
+
             'state' => $request->state,
             'city' => $request->city,
             'locally' => $request->locally,
@@ -47,11 +50,47 @@ class UserController extends Controller
         ]);
 
         return back();
-
     }
+    public function updatelocation(){
+        $state_list = Location::select('state')->distinct()->get();
+        return view('users.updatelocation',compact('state_list'));
+    }
+    public function updatelocationstore(Request $request){
+        $this->validate($request,[
+            'state' => 'required',
+            'city' => 'required',
+            'locally' => 'required',
+        ]);
 
+        User::where('id', Auth::user()->id)->update([
+
+            'state' => $request->state,
+            'city' => $request->city,
+            'locally' => $request->locally,
+            'area' => Str::slug($request['locally']),
+
+        ]);
+        return redirect()->back()->with('success', 'Post was successfully added!');
+    }
     public function userskills(){
         return view('users.skills');
+    }
+
+    public function changenameform(){
+        return view('users.change-name');
+    }
+
+    public function userchangename(Request $request){
+        //dd($request);
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+
+        User::where('id', Auth::user()->id)->update([
+
+            'name' => $request->name,
+        ]);
+        return redirect()->back()->with('success', 'Post was successfully added!');
     }
 
 
@@ -90,6 +129,7 @@ class UserController extends Controller
     //User profile dropdown
     function fetch(Request $request)
     {
+        //dd($request);
         $select = $request->get('select');
         $value = $request->get('value');
         $dependent = $request->get('dependent');
@@ -100,8 +140,10 @@ class UserController extends Controller
             ->where($select, $value)
             ->distinct()
             ->get();
-        //dd($data);
+
+       // dd($data);
         $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+
         foreach($data as $row)
         {
             $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';

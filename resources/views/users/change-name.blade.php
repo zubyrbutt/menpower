@@ -14,22 +14,18 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('userskillsstore') }}">
-                            @csrf
-                                <div class="form-group"> Skill
-                                    <select name="name" id="name" class="form-control">
-                                        <option value="">Select Skill</option>
-                                        @foreach($skills as $skill)
-                                            <option value="{{ $skill->name}}">{{ $skill->name }}</option>
-                                        @endforeach
-                                    </select>
 
-                                    @error('state')
-                                    <span class="invalid-feedback" role="alert">
+                        <form method="POST" action="{{ route('userchangename') }}">
+                            @csrf
+                            <div class="form-group"> Name
+                             <input type="text" name="name" class="form-control" placeholder="Enter your real name ..">
+
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
-                                    @enderror
-                                </div>
+                                @enderror
+                            </div>
 
                             <div class="form-group ">
 

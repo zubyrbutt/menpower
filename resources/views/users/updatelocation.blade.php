@@ -7,26 +7,22 @@
             @include('layouts.partials')
 
             <div class="col-md-5">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('profileUpdate') }}">
+                        <form method="POST" action="{{ route('update-location-store') }}">
                             @csrf
 
-                            <div class="align-items-center mb-2">
-                                <img class="img-thumbnail" width="150" height="150"
-                                     src="{{asset('/images/profile/profile.png')}}" alt="image">
+{{--                            <div class="align-items-center mb-2">--}}
+{{--                                <img class="img-thumbnail" width="150" height="150"--}}
+{{--                                     src="{{asset('/images/profile/profile.png')}}" alt="image">--}}
 
-                            </div>
+{{--                            </div>--}}
 
-                           <p><strong>Phone:</strong> {{$user->phone}}</p>
-
-
-                            @if(Auth::user()->state != null && Auth::user()->city != null && Auth::user()->locally !=null)
-                                <strong>State: </strong> <span class="text link-text text-muted">{{Auth::user()->state}}</span><br>
-                                <strong>City: </strong> <span class="text link-text text-muted">{{Auth::user()->city}}</span><br>
-                                <strong>Local Area: </strong> <span class="text link-text text-muted">{{Auth::user()->locally}}</span><br>
-
-                            @else
                                 <div class="form-group"> State
                                     <select name="state" id="state" class="form-control input-lg dynamic"
                                             data-dependent="city">
@@ -73,39 +69,10 @@
                                                                 </span>
                                     @enderror
                                 </div>
-                            @endif
-
-
-
-
-
-                            {{--                            <div class="form-group">--}}
-
-                            {{--                                <div class="col-md-6">--}}
-                            {{--                                    Pssword--}}
-                            {{--                                    <input id="password" type="password"--}}
-                            {{--                                           class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">--}}
-
-                            {{--                                    @error('password')--}}
-                            {{--                                    <span class="invalid-feedback" role="alert">--}}
-                            {{--                                        <strong>{{ $message }}</strong>--}}
-                            {{--                                    </span>--}}
-                            {{--                                    @enderror--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-
-                            {{--                            <div class="form-group">--}}
-                            {{--                                <div class="col-md-6">--}}
-                            {{--                                    Confirm Password--}}
-                            {{--                                    <input id="password-confirm" type="password" class="form-control"--}}
-                            {{--                                           name="password_confirmation"      autocomplete="new-password">--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-
 
                             <div class="form-group ">
 
-                                <button class="btn btn-primary" type="submit">{{ __('Save') }}</button>
+                                <button class="btn btn-primary" type="submit">{{ __('Update') }}</button>
 
                             </div>
 

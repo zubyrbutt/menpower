@@ -6,21 +6,6 @@
 
 @section('content')
 
-    {{--    <div class="flex-center position-ref full-height">--}}
-    {{--        @if (Route::has('login'))--}}
-    {{--            <div class="top-right links">--}}
-    {{--                @auth--}}
-    {{--                    <a href="{{ url('/home') }}">Home</a>--}}
-    {{--                @else--}}
-    {{--                    <a href="{{ route('login') }}">Login</a>--}}
-
-    {{--                    @if (Route::has('register'))--}}
-    {{--                        <a href="{{ route('register') }}">Register</a>--}}
-    {{--                    @endif--}}
-    {{--                @endauth--}}
-    {{--            </div>--}}
-    {{--        @endif--}}
-
     <div class="container">
 
         <div class="row">
@@ -77,25 +62,40 @@
 
                     <div class="row justify-content-center">
                         <div class="col-sm">
-                            <div class="card mb-1">
+                            <div class="card" style="border: none !important;">
                                 <div class="card-body">
 
                                     <div class="media col-md">
-                                        <img class="align-self-start mr-3" style=" border: 1px solid #ddd;" width="130" height="130" src="{{asset('/images/profile/profile.png')}}" alt="Generic placeholder image">
+                                        <a href="{{url('profile/'.$user->id)}}">
+                                            <img class="align-self-start mr-3" style=" border: 1px solid #ddd;" width="130" height="130" src="{{asset('/images/profile/profile.png')}}" alt="Generic placeholder image">
+                                        </a>
                                         <div class="media-body">
+                                            <a href="{{url('profile/'.$user->id)}}">
                                             <h5 class="card-title"
                                                 style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 16.1px; color: #002f34; text-transform: capitalize">
-                                                <b>{{$user->name}}</b></h5>
+                                                <b>{{$user->name}}</b></h5></a>
 
                                             <div class="card-title text-muted" style="text-transform: capitalize; font-size: 11px" >
-                                                <span>Plumber, Electration - </span>
+                                                <a href="{{url('category/'.$user->skill)}}">
+                                                    <span style="margin-right: 7px;">{{$user->skill}}  </span>
+
+                                                </a>
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                                 </svg>
-                                                <span>Dhok kala khan, Rawalpindi</span>
+                                                <a href="#">
+                                                    <span>{{$user->locally}}</span>
+
+                                                </a>
+                                                <a href="{{url('city/'.$user->city)}}">
+                                                    <span>{{$user->city}}</span>
+
+                                                </a>
 
                                                </div>
-                                            <p>Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                            <a class="link-text" href="{{url('profile/'.$user->id)}}">
+                                                <p>Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                            </a>
                                         </div>
                                     </div>
 {{--                                    <div class="text-right" style="height: 70px; width: 70px; border-radius: 140px;">--}}
