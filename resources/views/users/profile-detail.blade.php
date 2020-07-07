@@ -390,10 +390,23 @@
                     <div class="wrapper">
                         <img src="https://bootdey.com/img/Content/avatar/avatar6.png" style="margin-top: 30px;" alt="" class="user-profile">
                         <h3>{{$user->name}}</h3>
+
                         <p>{{$user->skill}}</p>
-                        <p>{{$user->locally}}, {{$user->city}}</p>
+                            <p><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                </svg> {{$user->locally}}, {{$user->city}}</p>
+                        </div>
+                    <div class="row ">
+                                                <div class="col-lg-12">
+                                                    <div class="float-right float-md-right float-sm-none">
+                                                        <ul class=" nav nav-tabs  s-nav">
+                                                            <li><button class="btn btn-success">Hire me</button></li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
                     </div>
-{{--                    <div class="row ">--}}
+    {{--                    <div class="row ">--}}
 {{--                        <div class="col-lg-12">--}}
 {{--                            <ul class=" nav nav-tabs justify-content-center s-nav">--}}
 {{--                                <li><a class="active" href="#">Timeline</a></li>--}}
@@ -471,48 +484,49 @@
                     <!--- \\\\\\\Post-->
 
                     @auth
-                    <div class="card social-timeline-card">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Share your insights</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Share Images</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade active show" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                                    <div class="form-group">
-                                        <label class="sr-only" for="message">post</label>
-                                        <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Upload image</label>
-                                        </div>
-                                    </div>
-                                    <div class="py-4"></div>
-                                </div>
-                            </div>
-                            <div class="btn-toolbar justify-content-between">
-                                <div class="btn-group">
-                                    <button type="submit" class="btn btn-theme-primary">share</button>
-                                </div>
-                                <div class="btn-group">
-                                    <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-globe"></i>
-                                    </button>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="card social-timeline-card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Share your insights</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Share Images</a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <div class="tab-content" id="myTabContent">--}}
+{{--                                <div class="tab-pane fade active show" id="posts" role="tabpanel" aria-labelledby="posts-tab">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label class="sr-only" for="message">post</label>--}}
+{{--                                        <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <div class="custom-file">--}}
+{{--                                            <input type="file" class="custom-file-input" id="customFile">--}}
+{{--                                            <label class="custom-file-label" for="customFile">Upload image</label>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="py-4"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="btn-toolbar justify-content-between">--}}
+{{--                                <div class="btn-group">--}}
+{{--                                    <button type="submit" class="btn btn-theme-primary">share</button>--}}
+{{--                                </div>--}}
+{{--                                <div class="btn-group">--}}
+{{--                                    <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                        <i class="fa fa-globe"></i>--}}
+{{--                                    </button>--}}
+
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 @else
                         <div class="card social-timeline-card">
                             <div class="card-header">
