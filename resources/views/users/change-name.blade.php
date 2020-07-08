@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             @include('layouts.partials')
 
-            <div class="col-md-5">
+            <div class="col-md-6">
                 @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}

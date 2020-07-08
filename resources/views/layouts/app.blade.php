@@ -58,8 +58,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item link-text" readonly="">
-                                       new notification not yet
+
+                                    <a class="dropdown-item link-text" href="#" readonly="">
+                                     New notification not available
+
                                     </a>
 
                                 </div>

@@ -48,10 +48,6 @@ class HomeController extends Controller
                 if ($query != '') {
                     $data = Location::where('city', 'like', '%' . $query . '%')
                         ->orWhere('locally', 'like', '%' . $query . '%')
-//                        ->orWhere('City', 'like', '%'.$query.'%')
-//                        ->orWhere('PostalCode', 'like', '%'.$query.'%')
-//                        ->orWhere('Country', 'like', '%'.$query.'%')
-//                        ->orderBy('CustomerID', 'desc')
                         ->paginate(7);
 
                 } else {
@@ -65,7 +61,7 @@ class HomeController extends Controller
                             '<a href="' . $row->locally_slug . '" class="card-link link-text">'
                             . $row->locally .
                             '</a>
-                            <a href="city/'.$row->city_slug.'"> '. $row->city .'</a>
+                            <a href="'.$row->city_slug.'"> '. $row->city .'</a>
                             <span class="badge badge-light">  10</span><hr>';
                     }
                 } else {
@@ -85,32 +81,38 @@ class HomeController extends Controller
         }
     }
 
-    public function skillfilter(Request $request, $skill)
+    public function skillfilter(Request $request, $post)
     {
-        //dd($skill);
-        $users = User::where('skill', $skill)->paginate(9);
+        //dd($post);
+        if($post != '')
+        {
+            $users = User::
+            where('city', $post)->where('skill', '!=' , null)
+                ->orWhere('skill', $post)->orWhere('area',$post)->where('skill', '!=', null)->get();
+        }
         $locations = Location::select('state')->get();
 
         return view('welcome', compact('users', 'locations'));
 
     }
 
-    public function cityfilter(Request $request, $city)
-    {
-        //dd($location);
-        $users = User::where('city', $city)->paginate(9);
-        $locations = Location::select('state')->get();
+//    public function cityfilter(Request $request, $city)
+//    {
+//        //dd($location);
+//        $users = User::where('city', $city)->paginate(9);
+//        $locations = Location::select('state')->get();
+//
+//        return view('welcome', compact('users', 'locations'));
+//    }
+//
+//    public function areafilter($area)
+//    {
+//        //dd($area);
+//        $users = User::where('area', $area)->paginate(9);
+//        $locations = Location::select('state')->get();
+//
+//        return view('welcome', compact('users', 'locations'));
+//    }
 
-        return view('welcome', compact('users', 'locations'));
-    }
-
-    public function areafilter($area)
-    {
-        //dd($area);
-        $users = User::where('area', $area)->paginate(9);
-        $locations = Location::select('state')->get();
-
-        return view('welcome', compact('users', 'locations'));
-    }
 
 }

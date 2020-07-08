@@ -11,6 +11,9 @@
 |
 */
 
+
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', 'HomeController@home');
 
 Auth::routes();
@@ -30,19 +33,27 @@ Route::post('dynamic_dependent/fetch', 'UserController@fetch')->name('dynamicdep
 Route::get('/update-location','UserController@updatelocation');
 Route::post('/update-location-store','UserController@updatelocationstore')->name('update-location-store');
 
+
 //skils
 Route::get('/user-skills','SkillController@index');
 Route::post('/user-skills-store','SkillController@store')->name('userskillsstore');
 
 //filter
-Route::get('/category/{skill}','HomeController@skillfilter');
-Route::get('/city/{city}','HomeController@cityfilter');
-Route::get('/{area}','HomeController@areafilter');
+Route::get('/{post}','HomeController@skillfilter');
 
-Route::get('/user-name-change','UserController@changenameform');
+//Route::get('/city/{city}','HomeController@cityfilter');
+//Route::get('/{area}','HomeController@areafilter');
+
+Route::get('/user/name-change','UserController@changenameform');
 Route::post('/user-change-name-store','UserController@userchangename')->name('userchangename');
 
 //Admin Routes
 Route::get('/dashboard','UserController@dashboard')->name('dashboard');
 Route::get('/dashboard/add-new-location','UserController@addnewlocation')->name('addnewlocation');
 Route::post('/dashboard/add-new-location/store','UserController@addnewlocationstore')->name('addnewlocationstore');
+
+
+//notification
+Route::get('/x/notification','UserController@notification');
+
+

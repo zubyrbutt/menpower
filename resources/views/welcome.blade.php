@@ -317,14 +317,16 @@
                                             <a href="{{url('profile/'.$user->id)}}">
                                                 <h5>{{$user->name}}</h5>
                                             </a>
-                                            <a href="{{url('category/'.$user->skill)}}">
+
+                                            <a href="{{url($user->skill)}}">
                                                 <h5><span class="unread">{{$user->skill}}</span></h5>
                                             </a>
+
                                         </div>
                                         <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                             eiusmod tempor incididunt ut labore et dolor....</p>
-                                        <span>{{$user->locally}},
-                                             <a href="{{url('city/'.$user->city)}}"><span>{{$user->city}}</span></a>
+                                        <span><a href="{{$user->area}}">{{$user->locally}}</a> ,
+                                             <a href="{{url($user->city)}}"><span>{{$user->city}}</span></a>
                                         </span>
                                     </div>
 

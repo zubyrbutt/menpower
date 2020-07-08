@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Location;
+use App\Notifications\HireMe;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,6 @@ class UserController extends Controller
 {
     public function profile()
     {
-
         $user = User::find(Auth::user()->id);
         $state_list = Location::select('state')->distinct()->get();
 
@@ -27,7 +27,7 @@ class UserController extends Controller
     public function profileDetail(Request $request, $id)
     {
         $user = User::find($id);
-        //dd($user);
+
         return view('users.profile-detail', compact('user'));
 
     }
@@ -35,7 +35,7 @@ class UserController extends Controller
     public function profileUpdate(Request $request)
     {
         //dd($request);
-        $this->validate($request,[
+        $this->validate($request, [
             'state' => 'required',
             'city' => 'required',
             'locally' => 'required',
@@ -51,12 +51,16 @@ class UserController extends Controller
 
         return back();
     }
-    public function updatelocation(){
+
+    public function updatelocation()
+    {
         $state_list = Location::select('state')->distinct()->get();
-        return view('users.updatelocation',compact('state_list'));
+        return view('users.updatelocation', compact('state_list'));
     }
-    public function updatelocationstore(Request $request){
-        $this->validate($request,[
+
+    public function updatelocationstore(Request $request)
+    {
+        $this->validate($request, [
             'state' => 'required',
             'city' => 'required',
             'locally' => 'required',
@@ -72,17 +76,21 @@ class UserController extends Controller
         ]);
         return redirect()->back()->with('success', 'Post was successfully added!');
     }
-    public function userskills(){
+
+    public function userskills()
+    {
         return view('users.skills');
     }
 
-    public function changenameform(){
+    public function changenameform()
+    {
         return view('users.change-name');
     }
 
-    public function userchangename(Request $request){
+    public function userchangename(Request $request)
+    {
         //dd($request);
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required',
         ]);
 
@@ -95,25 +103,26 @@ class UserController extends Controller
 
 
 //    Admin Functions
-    public function dashboard(){
+    public function dashboard()
+    {
         return view('admin.dashboard');
     }
 
 
-    public function addnewlocation(){
+    public function addnewlocation()
+    {
         return view('admin.add-new-location');
     }
 
 
-
     public function addnewlocationstore(Request $request)
     {
-        $this->validate($request,[
-            'locally' => ['required','unique:locations'],
+        $this->validate($request, [
+            'locally' => ['required', 'unique:locations'],
 
         ]);
         //dd($request);
-         Location::create([
+        Location::create([
             'country' => $request['country'],
             'state' => $request['state'],
             'state_slug' => Str::slug($request->state),
@@ -141,13 +150,25 @@ class UserController extends Controller
             ->distinct()
             ->get();
 
-       // dd($data);
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+        // dd($data);
+        $output = '<option value="">Select ' . ucfirst($dependent) . '</option>';
 
-        foreach($data as $row)
-        {
-            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+        foreach ($data as $row) {
+            $output .= '<option value="' . $row->$dependent . '">' . $row->$dependent . '</option>';
         }
         echo $output;
     }
+
+    public function notification()
+    {
+        $user = Auth::user();
+        $user->notify(new HireMe(User::findOrFail(200)));
+
+//        foreach(Auth::user()->unreadnotifications as $notification){
+//            dd($notification);
+//        }
+
+    }
+
+
 }
